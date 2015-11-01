@@ -13,6 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     d.vm.provider "virtualbox" do |v|
       v.memory = 1536
     end
+    d.vm.provision :shell, path: "bootstrap_ansible.sh"
   end
   (1..2).each do |i|
     config.vm.define "swarm-node-#{i}" do |d|

@@ -27,5 +27,14 @@ Create Environments
 ```bash
 cd ansible-workshop
 
+cat Vagrantfile
+
 vagrant up
+
+cat /vagrant/ansible/hosts/prod
+
+cat /vagrant/ansible/swarm.yml
+
+ansible-playbook /vagrant/ansible/swarm.yml \
+    -i /vagrant/ansible/hosts/prod
 ```
