@@ -1,3 +1,5 @@
+# hosts/prod
+
 [swarm]
 10.100.192.200 consul_extra="-server -bootstrap-expect 1" main_server=true
 10.100.192.20[1:2] consul_extra="" main_server_ip=10.100.192.200

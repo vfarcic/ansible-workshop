@@ -1,3 +1,5 @@
+# roles/swarm/tasks/main.yml
+
 - copy:
     src: docker.cfg
     dest: /etc/default/docker
