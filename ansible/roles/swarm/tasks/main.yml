@@ -1,0 +1,23 @@
+- copy:
+    src: docker.cfg
+    dest: /etc/default/docker
+  when: not main_server is defined
+  register: result
+
+- service:
+    name: docker
+    state: restarted
+  when: result|changed
+
+- docker:
+    name: swarm
+    image: swarm
+    ports: 2375:2375
+    command: manage consul://{{ facter_ipaddress_eth1 }}:8500/swarm
+  when: main_server is defined
+
+- docker:
+    name: swarm
+    image: swarm
+    command: join --advertise={{ facter_ipaddress_eth1 }}:2375 consul://{{ facter_ipaddress_eth1 }}:8500/swarm
+  when: not main_server is defined

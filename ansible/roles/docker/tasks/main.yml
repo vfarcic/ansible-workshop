@@ -1,0 +1,14 @@
+- apt_repository:
+    repo: deb https://apt.dockerproject.org/repo ubuntu-trusty main
+    update_cache: yes
+
+- apt:
+    name: "{{ item }}"
+    force: yes
+  with_items:
+    - docker-engine
+    - python-pip
+
+- pip:
+    name: docker-py
+    version: 0.4.0
